@@ -1,0 +1,83 @@
+version: "3.9"
+services:
+  mysql8r:
+    container_name: mysql8r
+    image: mysql:8
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: ksmdb01
+    volumes:
+      - data-mysql:/var/lib/mysql
+    restart: always
+    networks:
+      - spring
+
+  postgres14:
+    container_name: postgres14
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: mrr4ms0n#!
+      POSTGRES_USER: sysadm1n
+      POSTGRES_DB: kspdb01
+    volumes:
+      - data-postgres:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - spring
+
+  msvc-usuarios:
+    container_name: msvc-usuarios
+    image: mrr4ms0n/usuarios
+#    build:
+#      # De donde vamos a copiar nuestros archivos
+#      context: ./
+#      dockerfile: ./msc-usuarios/Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      PORT: 8001
+      DB_HOST: mysql8r:3306
+      DB_DATABASE: ksmdb01
+      DB_USERNAME: root
+      DB_PASSWORD: secret
+      CURSOS_URL: msvc-cursos:8002
+    networks:
+      - spring
+    depends_on:
+      - mysql8r
+    restart: always
+
+  msvc-cursos:
+    container_name: msvc-cursos
+    image: mrr4ms0n/cursos
+#    build:
+#      context: ./
+#      dockerfile: ./msc-cursos/Dockerfile
+    ports:
+      - "8002:8002"
+    environment:
+      PORT: 8002
+      DB_HOST: postgres14:5432
+      DB_DATABASE: kspdb01
+      DB_USERNAME: sysadm1n
+      DB_PASSWORD: mrr4ms0n#!
+      USUARIOS_URL: msvc-usuarios:8001
+    networks:
+      - spring
+    depends_on:
+      - postgres14
+      - msvc-usuarios
+    restart: always
+
+volumes:
+  data-mysql:
+    name: data-mysql
+  data-postgres:
+    name: data-postgres
+networks:
+  spring:
+

@@ -1,0 +1,21 @@
+2024-06-01 21:38:42.058  INFO 1 --- [main] m.c.k.c.m.MscUsuariosApplication         : Starting MscUsuariosApplication v0.0.1-SNAPSHOT using Java 17-ea on 319e8161730f with PID 1 (/app/msc-usuarios-0.0.1-SNAPSHOT.jar started by root in /app)
+2024-06-01 21:38:42.066  INFO 1 --- [main] m.c.k.c.m.MscUsuariosApplication         : No active profile set, falling back to 1 default profile: "default"
+2024-06-01 21:38:44.771  INFO 1 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-01 21:38:44.915  INFO 1 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 129 ms. Found 1 JPA repository interfaces.
+2024-06-01 21:38:45.427  INFO 1 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=7a8ec7a6-e780-36fc-b232-fedea7463c0f
+2024-06-01 21:38:46.478  INFO 1 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8001 (http)
+2024-06-01 21:38:46.495  INFO 1 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-01 21:38:46.496  INFO 1 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2024-06-01 21:38:46.591  INFO 1 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-01 21:38:46.591  INFO 1 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4301 ms
+2024-06-01 21:38:46.988  INFO 1 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-01 21:38:48.074  INFO 1 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-01 21:38:48.175  INFO 1 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-01 21:38:48.295  INFO 1 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.5.Final
+2024-06-01 21:38:48.776  INFO 1 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-06-01 21:38:48.992  INFO 1 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-06-01 21:38:50.187  INFO 1 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-06-01 21:38:50.199  INFO 1 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-01 21:38:51.296  WARN 1 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-01 21:38:52.577  INFO 1 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8001 (http) with context path ''
+2024-06-01 21:38:52.596  INFO 1 --- [main] m.c.k.c.m.MscUsuariosApplication         : Started MscUsuariosApplication in 11.725 seconds (JVM running for 13.134)

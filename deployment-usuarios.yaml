@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msvc-usuarios
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: msvc-usuarios
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: msvc-usuarios
+    spec:
+      containers:
+      - name: msvc-usuarios
+        image: mrr4ms0n/usuarios:latest
+        ports:
+        - containerPort: 8001
+        env:
+          - name: MY_POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+          - name: PORT
+            valueFrom:
+              configMapKeyRef:
+                name: msvc-usuarios
+                key: port
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: msvc-usuarios
+                key: db_host
+          - name: DB_DATABASE
+            valueFrom:
+              configMapKeyRef:
+                name: msvc-usuarios
+                key: database
+          - name: DB_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: msvc-usuarios
+                key: username
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: msvc-usuarios
+                key: password
+          - name: CURSOS_URL
+            valueFrom:
+              configMapKeyRef:
+                name: msvc-usuarios
+                key: curso_url
+#        readinessProbe:
+#          httpGet:
+#            path: /actuator/health/readiness
+#            port: 8001
+#            scheme: HTTP
+#          initialDelaySeconds: 5
+#          periodSeconds: 20
+#          timeoutSeconds: 10
+#        livenessProbe:
+#          httpGet:
+#            path: /actuator/health/liveness
+#            port: 8001
+#            scheme: HTTP
+#          initialDelaySeconds: 10
+#          periodSeconds: 30
+#          timeoutSeconds: 10
+#        resources:
+#          requests:
+#            memory: "1024Mi"
+#            cpu: "800m"
+#          limits:
+#            memory: "1500Mi"
+#            cpu: "1200m"
